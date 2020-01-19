@@ -5,6 +5,7 @@ class GildedRose(
 ) {
     private val basicItemHandler: ItemHandler = BasicItemHandler()
     private val brieItemHandler: ItemHandler = BrieItemHandler()
+    private val backstagePassesItemHandler: ItemHandler = BackstagePassesItemHandler()
 
     fun updateQuality() {
         items.forEach { item ->
@@ -18,6 +19,12 @@ class GildedRose(
 
             if (item.name == ITEM_BRIE) {
                 brieItemHandler.handleItem(item)
+                return
+            }
+
+            if (item.name == ITEM_BACKSTAGE_PASSES) {
+                // Tests fail for now
+                backstagePassesItemHandler.handleItem(item)
                 return
             }
 

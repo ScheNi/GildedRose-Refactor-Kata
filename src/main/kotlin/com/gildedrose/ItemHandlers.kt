@@ -27,8 +27,10 @@ class BasicItemHandler() : ItemHandler {
 
 
 class BrieItemHandler() : ItemHandler {
+
     private val qualityIncreaseForPositiveSellIn = 1
     private val qualityIncreaseForNegativeSellIn = qualityIncreaseForPositiveSellIn * 2
+
     override fun handleItem(item: Item) {
         item.apply {
             // Decrease sellIn by 1
@@ -43,7 +45,13 @@ class BrieItemHandler() : ItemHandler {
             increaseQuality(by = qualityIncrease)
         }
     }
+}
 
+class BackstagePassesItemHandler : ItemHandler {
+
+    override fun handleItem(item: Item) {
+
+    }
 }
 
 fun Item.decreaseQuality(by: Int = 1, minimumQuality: Int = DEFAULT_MINIMUM_ITEM_QUALITY) {
