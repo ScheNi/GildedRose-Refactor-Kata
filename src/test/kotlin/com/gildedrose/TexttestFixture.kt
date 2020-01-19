@@ -1,5 +1,14 @@
 package com.gildedrose
 
+val itemHandlerFactory = ItemHandlerFactoryImpl(
+        itemHandlers = mapOf(
+                ITEM_BRIE to BrieItemHandler(),
+                ITEM_BACKSTAGE_PASSES to BackstagePassesItemHandler(),
+                ITEM_SULFURAS to SulfurasItemHandler()
+        ),
+        defaultItemHandler =  BasicItemHandler()
+)
+
 fun main(args: Array<String>) {
 
     println("OMGHAI!")
@@ -15,7 +24,7 @@ fun main(args: Array<String>) {
             // this conjured item does not work properly yet
             Item("Conjured Mana Cake", 3, 6))
 
-    val app = GildedRose(items)
+    val app = GildedRose(items, itemHandlerFactory)
 
     var days = 2
     if (args.size > 0) {

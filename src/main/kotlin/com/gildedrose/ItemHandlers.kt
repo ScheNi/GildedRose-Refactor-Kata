@@ -79,7 +79,8 @@ class BackstagePassesItemHandler : ItemHandler {
 class SulfurasItemHandler : ItemHandler {
 
     override fun handleItem(item: Item) {
-
+        // Quality + sellIn should stay the same
+        // Nothing has to happen here
     }
 }
 
