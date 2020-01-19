@@ -17,10 +17,10 @@ class GildedRose(
             }
 
             if (item.name == ITEM_BRIE) {
-                // Tests should fail for now
                 brieItemHandler.handleItem(item)
                 return
             }
+
 
             if (item.name != ITEM_BRIE && item.name != ITEM_BACKSTAGE_PASSES) {
                 if (item.quality > 0) {
