@@ -23,7 +23,6 @@ class GildedRose(
             }
 
             if (item.name == ITEM_BACKSTAGE_PASSES) {
-                // Tests fail for now
                 backstagePassesItemHandler.handleItem(item)
                 return
             }

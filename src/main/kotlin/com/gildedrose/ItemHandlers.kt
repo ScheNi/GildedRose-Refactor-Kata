@@ -49,8 +49,30 @@ class BrieItemHandler() : ItemHandler {
 
 class BackstagePassesItemHandler : ItemHandler {
 
-    override fun handleItem(item: Item) {
+    private val qualityIncreaseForSellInMoreThan10 = 1
+    private val qualityIncreaseForSellInMoreThan5 = 2
+    private val qualityIncreaseForSellInMoreThan0 = 3
 
+    override fun handleItem(item: Item) {
+        item.apply {
+            // Decrease sellIn by 1
+            decreaseSellIn()
+
+            // Increase quality by 1 if sellIn >= 10
+            // Increase quality by 2 if sellIn >= 5
+            // Increase quality by 3 if sellIn >= 0
+            // If sellIn passes, reset quality to 0
+            val qualityIncrease = if (sellIn >= 10) {
+                qualityIncreaseForSellInMoreThan10
+            } else if (sellIn >= 5) {
+                qualityIncreaseForSellInMoreThan5
+            } else if (sellIn >= 0){
+                qualityIncreaseForSellInMoreThan0
+            } else {
+                -quality
+            }
+            increaseQuality(by = qualityIncrease)
+        }
     }
 }
 
