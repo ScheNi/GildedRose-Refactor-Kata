@@ -3,6 +3,7 @@ package com.gildedrose
 class GildedRose(
         val items: Array<Item>
 ) {
+    private val basicItemHandler: ItemHandler = BasicItemHandler()
 
     fun updateQuality() {
         items.forEach { item ->
@@ -10,8 +11,7 @@ class GildedRose(
             if (item.name != ITEM_BRIE
                     && item.name != ITEM_BACKSTAGE_PASSES
                     && item.name != ITEM_SULFURAS) {
-                // Basic items test fails now!
-                // Let's add our new logic here and make the tests pass again
+                basicItemHandler.handleItem(item)
                 return
             }
 
