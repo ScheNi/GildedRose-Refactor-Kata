@@ -1,9 +1,20 @@
 package com.gildedrose
 
-class GildedRose(var items: Array<Item>) {
+class GildedRose(
+        val items: Array<Item>
+) {
 
     fun updateQuality() {
         items.forEach { item ->
+
+            if (item.name != ITEM_BRIE
+                    && item.name != ITEM_BACKSTAGE_PASSES
+                    && item.name != ITEM_SULFURAS) {
+                // Basic items test fails now!
+                // Let's add our new logic here and make the tests pass again
+                return
+            }
+
             if (item.name != ITEM_BRIE && item.name != ITEM_BACKSTAGE_PASSES) {
                 if (item.quality > 0) {
                     // Item quality is greater than 0
