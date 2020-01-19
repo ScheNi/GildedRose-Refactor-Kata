@@ -4,7 +4,7 @@ interface ItemHandler {
     fun handleItem(item: Item)
 }
 
-class BasicItemHandler() : ItemHandler {
+class BasicItemHandler : ItemHandler {
 
     private val qualityDeductionForPositiveSellIn = 1
     private val qualityDeductionForNegativeSellIn = qualityDeductionForPositiveSellIn * 2
@@ -26,7 +26,7 @@ class BasicItemHandler() : ItemHandler {
 }
 
 
-class BrieItemHandler() : ItemHandler {
+class BrieItemHandler : ItemHandler {
 
     private val qualityIncreaseForPositiveSellIn = 1
     private val qualityIncreaseForNegativeSellIn = qualityIncreaseForPositiveSellIn * 2
@@ -73,6 +73,13 @@ class BackstagePassesItemHandler : ItemHandler {
             }
             increaseQuality(by = qualityIncrease)
         }
+    }
+}
+
+class SulfurasItemHandler : ItemHandler {
+
+    override fun handleItem(item: Item) {
+
     }
 }
 
