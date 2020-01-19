@@ -9,7 +9,7 @@ class GildedRose(var items: Array<Item>) {
                     // Item quality is greater than 0
                     // Item is not aged brie & not backstage passes
                     // -> Decrease quality by 1
-                    if (item.name != "Sulfuras, Hand of Ragnaros") {
+                    if (item.name != ITEM_SULFURAS) {
                         item.quality = item.quality - 1
                     }
                 }
@@ -46,7 +46,7 @@ class GildedRose(var items: Array<Item>) {
 
             // Item is not Sulfuras
             // -> decrease sellIn by 1
-            if (item.name != "Sulfuras, Hand of Ragnaros") {
+            if (item.name != ITEM_SULFURAS) {
                 item.sellIn = item.sellIn - 1
             }
 
@@ -58,7 +58,7 @@ class GildedRose(var items: Array<Item>) {
                             // Item is not aged brie, not backstage pass & not Sulfuras
                             // Item quality is bigger than 0
                             // -> Decrease quality by 1
-                            if (item.name != "Sulfuras, Hand of Ragnaros") {
+                            if (item.name != ITEM_SULFURAS) {
                                 item.quality = item.quality - 1
                             }
                         }

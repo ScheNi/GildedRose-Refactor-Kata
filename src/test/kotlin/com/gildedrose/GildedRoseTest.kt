@@ -154,6 +154,27 @@ class GildedRoseTest {
         assertEquals(50, item.quality)
     }
 
+    @Test
+    fun `sulfuras item does not decrease sellIn`() {
+        val item = Item(ITEM_SULFURAS, 10, 80)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(10, item.sellIn)
+    }
+
+    @Test
+    fun `sulfuras item does not increase quality`() {
+        val item = Item(ITEM_SULFURAS, 10, 80)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(80, item.quality)
+    }
+
+
 }
 
 
