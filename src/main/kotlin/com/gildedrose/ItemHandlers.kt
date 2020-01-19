@@ -28,6 +28,14 @@ class BasicItemHandler() : ItemHandler {
     }
 }
 
+
+class BrieItemHandler() : ItemHandler {
+    override fun handleItem(item: Item) {
+
+    }
+
+}
+
 fun Item.decreaseQuality(by: Int = 1) {
     quality -= by
 }
