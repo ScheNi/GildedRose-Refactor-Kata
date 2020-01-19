@@ -4,7 +4,7 @@ class GildedRose(var items: Array<Item>) {
 
     fun updateQuality() {
         items.forEach { item ->
-            if (item.name != ITEM_BRIE && item.name != "Backstage passes to a TAFKAL80ETC concert") {
+            if (item.name != ITEM_BRIE && item.name != ITEM_BACKSTAGE_PASSES) {
                 if (item.quality > 0) {
                     // Item quality is greater than 0
                     // Item is not aged brie & not backstage passes
@@ -19,7 +19,7 @@ class GildedRose(var items: Array<Item>) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1
 
-                    if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
+                    if (item.name == ITEM_BACKSTAGE_PASSES) {
                         if (item.sellIn < 11) {
                             // Item quality is less than 50
                             // Item sellIn is less than 11
@@ -52,7 +52,7 @@ class GildedRose(var items: Array<Item>) {
 
             if (item.sellIn < 0) {
                 if (item.name != ITEM_BRIE) {
-                    if (item.name != "Backstage passes to a TAFKAL80ETC concert") {
+                    if (item.name != ITEM_BACKSTAGE_PASSES) {
                         if (item.quality > 0) {
                             // Item is over sellIn date,
                             // Item is not aged brie, not backstage pass & not Sulfuras

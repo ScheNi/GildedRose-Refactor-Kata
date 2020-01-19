@@ -64,7 +64,6 @@ class GildedRoseTest {
         assertEquals(9, item.sellIn)
     }
 
-
     @Test
     fun `brie item increases quality by one when sellIn is greater than 0`() {
         val item = Item(ITEM_BRIE, 1, 4)
@@ -94,6 +93,67 @@ class GildedRoseTest {
 
         assertEquals(50, item.quality)
     }
+
+    @Test
+    fun `backstage passes item decreases sellIn by one`() {
+        val item = Item(ITEM_BACKSTAGE_PASSES, 10, 4)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(9, item.sellIn)
+    }
+
+    @Test
+    fun `backstage passes item increases quality by one when sellIn is more than or equal to 11`() {
+        val item = Item(ITEM_BACKSTAGE_PASSES, 11, 4)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(5, item.quality)
+    }
+
+    @Test
+    fun `backstage passes item increases quality by two when sellIn is more than or equal to 6`() {
+        val item = Item(ITEM_BACKSTAGE_PASSES, 6, 4)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(6, item.quality)
+    }
+
+    @Test
+    fun `backstage passes item increases quality by three when sellIn is more than 0`() {
+        val item = Item(ITEM_BACKSTAGE_PASSES, 1, 4)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(7, item.quality)
+    }
+
+    @Test
+    fun `backstage passes item quality drops to 0 when sellIn is less than or equal to 0`() {
+        val item = Item(ITEM_BACKSTAGE_PASSES, 0, 4)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(0, item.quality)
+    }
+
+    @Test
+    fun `backstage passes item quality can not go above 50`() {
+        val item = Item(ITEM_BACKSTAGE_PASSES, 1, 50)
+        val app = GildedRose(arrayOf(item))
+
+        app.updateQuality()
+
+        assertEquals(50, item.quality)
+    }
+
 }
 
 
