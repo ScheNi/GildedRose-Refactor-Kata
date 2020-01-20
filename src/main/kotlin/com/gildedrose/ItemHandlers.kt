@@ -25,6 +25,26 @@ class BasicItemHandler : ItemHandler {
     }
 }
 
+class ConjuredItemHandler : ItemHandler {
+
+    private val qualityDeductionForPositiveSellIn = 2
+    private val qualityDeductionForNegativeSellIn = qualityDeductionForPositiveSellIn * 2
+
+    override fun handleItem(item: Item) {
+        item.apply {
+            // Decrease sellIn by 1
+            decreaseSellIn()
+
+            // Decrease quality by 2 if sellIn >= 0 else by twice as much
+            val qualityDeduction = if (sellIn >= 0) {
+                qualityDeductionForPositiveSellIn
+            } else {
+                qualityDeductionForNegativeSellIn
+            }
+            decreaseQuality(by = qualityDeduction)
+        }
+    }
+}
 
 class BrieItemHandler : ItemHandler {
 
@@ -62,14 +82,11 @@ class BackstagePassesItemHandler : ItemHandler {
             // Increase quality by 2 if sellIn >= 5
             // Increase quality by 3 if sellIn >= 0
             // If sellIn passes, reset quality to 0
-            val qualityIncrease = if (sellIn >= 10) {
-                qualityIncreaseForSellInMoreThan10
-            } else if (sellIn >= 5) {
-                qualityIncreaseForSellInMoreThan5
-            } else if (sellIn >= 0){
-                qualityIncreaseForSellInMoreThan0
-            } else {
-                -quality
+            val qualityIncrease = when {
+                sellIn >= 10 -> qualityIncreaseForSellInMoreThan10
+                sellIn >= 5 -> qualityIncreaseForSellInMoreThan5
+                sellIn >= 0 -> qualityIncreaseForSellInMoreThan0
+                else -> -quality
             }
             increaseQuality(by = qualityIncrease)
         }

@@ -4,7 +4,8 @@ val itemHandlerFactory = ItemHandlerFactoryImpl(
         itemHandlers = mapOf(
                 ITEM_BRIE to BrieItemHandler(),
                 ITEM_BACKSTAGE_PASSES to BackstagePassesItemHandler(),
-                ITEM_SULFURAS to SulfurasItemHandler()
+                ITEM_SULFURAS to SulfurasItemHandler(),
+                ITEM_CONJURED to ConjuredItemHandler()
         ),
         defaultItemHandler =  BasicItemHandler()
 )
