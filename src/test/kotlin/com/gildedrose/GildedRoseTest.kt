@@ -56,6 +56,47 @@ class GildedRoseTest {
     }
 
     @Test
+    fun `conjured item decreases sellIn by one`() {
+        val item = Item(ITEM_CONJURED, 10, 4)
+        val app = GildedRose(arrayOf(item), itemHandlerFactory)
+
+        app.updateQuality()
+
+        assertEquals(9, item.sellIn)
+    }
+
+
+    @Test
+    fun `conjured item decreases quality by two when sellIn is greater than 0`() {
+        val item = Item(ITEM_CONJURED, 1, 4)
+        val app = GildedRose(arrayOf(item), itemHandlerFactory)
+
+        app.updateQuality()
+
+        assertEquals(2, item.quality)
+    }
+
+    @Test
+    fun `conjured item decreases quality twice as fast when sellIn is less than 1`() {
+        val item = Item(ITEM_CONJURED, 0, 4)
+        val app = GildedRose(arrayOf(item), itemHandlerFactory)
+
+        app.updateQuality()
+
+        assertEquals(0, item.quality)
+    }
+
+    @Test
+    fun `conjured item quality can not go negative`() {
+        val item = Item(ITEM_CONJURED, 0, 0)
+        val app = GildedRose(arrayOf(item), itemHandlerFactory)
+
+        app.updateQuality()
+
+        assertEquals(0, item.quality)
+    }
+
+    @Test
     fun `brie item decreases sellIn by one`() {
         val item = Item(ITEM_BRIE, 10, 4)
         val app = GildedRose(arrayOf(item), itemHandlerFactory)
