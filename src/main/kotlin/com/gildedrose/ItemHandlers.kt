@@ -100,17 +100,3 @@ class SulfurasItemHandler : ItemHandler {
         // Nothing has to happen here
     }
 }
-
-fun Item.decreaseQuality(by: Int = 1, minimumQuality: Int = DEFAULT_MINIMUM_ITEM_QUALITY) {
-    if (quality == minimumQuality) return
-    quality -= by
-}
-
-fun Item.increaseQuality(by: Int = 1, maximumQuality: Int = DEFAULT_MAXIMUM_ITEM_QUALITY) {
-    if (quality == maximumQuality) return
-    quality += by
-}
-
-fun Item.decreaseSellIn(by: Int = 1) {
-    sellIn -= by
-}
